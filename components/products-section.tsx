@@ -1,53 +1,40 @@
 import Link from "next/link";
 import { products } from "@/lib/site";
-import { ArrowIcon } from "./icons/arrow-icon";
 
 export function ProductsSection() {
   return (
-    <section id="products" className="py-20 md:py-24">
+    <section id="products" className="py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-5">
-        <h2 className="text-3xl font-bold tracking-tight text-[var(--ink)]">Flagship products</h2>
-        <p className="mt-3 max-w-2xl text-[var(--muted)]">
-          Telecom platforms we build and operate—plus custom software around them for operators and
-          integrators.
+        <p className="text-sm font-semibold tracking-wide text-[var(--accent-dark)] uppercase">Products</p>
+        <h2 className="mt-2 text-3xl font-bold tracking-tight text-[var(--ink)] md:text-4xl">
+          Our own platforms—battle-tested
+        </h2>
+        <p className="mt-4 max-w-2xl text-lg text-[var(--muted)]">
+          Alongside client work, we maintain SigWay: tooling born on real operator networks, not lab demos.
         </p>
-        <ul className="mt-12 grid gap-6 lg:grid-cols-3">
-          {products.map((p) => (
+        <ul className="mt-12 space-y-6">
+          {products.map((p, i) => (
             <li
               key={p.title}
-              className={`flex flex-col rounded-2xl border p-6 ${
-                p.badgeVariant === "soon"
-                  ? "border-dashed border-[var(--line)] bg-[var(--accent-soft)]/40"
-                  : "border-[var(--line)] bg-[var(--surface)] shadow-sm"
-              }`}
+              className="grid gap-4 rounded-2xl border border-[var(--line)] bg-white p-6 md:grid-cols-[auto_1fr] md:gap-8 md:p-8"
             >
-              <span
-                className={`mb-3 w-fit rounded-md px-2.5 py-1 text-[0.65rem] font-bold tracking-wide uppercase ${
-                  p.badgeVariant === "live"
-                    ? "bg-[var(--accent-dark)] text-white"
-                    : "bg-[var(--accent-soft)] text-[var(--accent-dark)]"
-                }`}
-              >
-                {p.badge}
+              <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[var(--accent-soft)] text-sm font-bold text-[var(--accent-dark)]">
+                {i + 1}
               </span>
-              <h3 className="text-xl font-semibold text-[var(--ink)]">{p.title}</h3>
-              <p className="mt-2 flex-1 text-[var(--muted)] leading-relaxed">{p.description}</p>
-              <div className="mt-5 flex flex-wrap gap-2">
-                {p.links.map((l) => (
-                  <Link
-                    key={l.label}
-                    href={l.href}
-                    {...(l.external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                    className="inline-flex items-center gap-1.5 text-sm font-semibold text-[var(--accent-dark)] hover:text-[var(--accent)]"
-                  >
-                    {l.label}
-                    <ArrowIcon className="h-4 w-4" />
-                  </Link>
-                ))}
+              <div>
+                <h3 className="text-xl font-semibold text-[var(--ink)]">{p.title}</h3>
+                <p className="mt-2 max-w-2xl leading-relaxed text-[var(--muted)]">{p.description}</p>
+                <p className="mt-3 text-sm font-medium text-[var(--accent-dark)]">{p.status}</p>
               </div>
             </li>
           ))}
         </ul>
+        <p className="mt-10 text-[var(--muted)]">
+          Want pricing or technical detail?{" "}
+          <Link href="#contact" className="font-semibold text-[var(--accent-dark)] underline-offset-2 hover:underline">
+            We&apos;ll walk you through it on a call.
+          </Link>
+        </p>
       </div>
     </section>
   );

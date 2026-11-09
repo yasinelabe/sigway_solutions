@@ -3,25 +3,25 @@ import { ServiceIcon } from "./icons/service-icon";
 
 export function ServicesSection() {
   return (
-    <section id="services" className="bg-[var(--paper)] py-20 md:py-24">
+    <section id="work" className="py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-5">
-        <h2 className="text-3xl font-bold tracking-tight text-[var(--ink)]">What we build</h2>
-        <p className="mt-3 max-w-2xl text-[var(--muted)]">
-          End-to-end delivery: discovery, architecture, implementation, deployment, and long-running support
-          for mission-critical channels.
+        <p className="text-sm font-semibold tracking-wide text-[var(--accent-dark)] uppercase">What we do</p>
+        <h2 className="mt-2 max-w-xl text-3xl font-bold tracking-tight text-[var(--ink)] md:text-4xl">
+          One team from idea to production
+        </h2>
+        <p className="mt-4 max-w-2xl text-lg text-[var(--muted)]">
+          You get engineers who understand both product craft and the realities of telecom—not a handoff
+          between agencies.
         </p>
-        <ul className="mt-12 grid gap-5 sm:grid-cols-2">
+        <ul className="mt-14 grid gap-6 sm:grid-cols-2">
           {services.map((s) => (
             <li
               key={s.title}
-              className="group rounded-2xl border border-[var(--line)] bg-[var(--surface)] p-6 shadow-sm transition hover:border-[var(--accent)]/40 hover:shadow-md"
+              className="rounded-2xl border border-[var(--line)] bg-white p-7 transition hover:shadow-md"
             >
-              <ServiceIcon
-                name={s.icon}
-                className="h-12 w-12 text-[var(--accent-dark)] transition group-hover:text-[var(--accent)]"
-              />
-              <h3 className="mt-4 text-lg font-semibold text-[var(--ink)]">{s.title}</h3>
-              <p className="mt-2 text-[var(--muted)] leading-relaxed">{s.description}</p>
+              <ServiceIcon name={s.icon} className="h-11 w-11 text-[var(--accent-dark)]" />
+              <h3 className="mt-4 text-xl font-semibold text-[var(--ink)]">{s.title}</h3>
+              <p className="mt-2 leading-relaxed text-[var(--muted)]">{s.description}</p>
             </li>
           ))}
         </ul>
